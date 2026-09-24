@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cdn.tailwindcss.com https://unpkg.com https://fonts.googleapis.com https://fonts.gstatic.com; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; frame-ancestors 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ANXION SOLUTIONS — Enterprise Networking & Cloud</title>
+<meta name="description" content="Enterprise networking and cloud solutions. Network infrastructure, cloud architecture, security, migration, managed services.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23000'/%3E%3Crect x='8' y='8' width='24' height='24' fill='none' stroke='%2317BD65' stroke-width='3'/%3E%3Ccircle cx='20' cy='20' r='6' fill='%2317BD65'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ANXION SOLUTIONS">
+<meta property="og:title" content="ANXION SOLUTIONS — Enterprise Networking & Cloud">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],mono:['Space Mono','monospace']},colors:{brand:'#00E5FF','brand-dk':'#00B8D9',paper:'#0A0A0A',ink:'#FFFFFF',muted:'#94A3B8'}}}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+::selection{background:#00E5FF;color:#000}
+html{background:var(--bg);color:var(--fg)}
+:root{--bg:#050505;--fg:#FFFFFF;--muted:#94A3B8;--accent:#00E5FF;--accent-dk:#00B3CC;--card:#0D0D0D;--bw:1px}
+body{background:var(--bg);color:var(--fg);overflow-x:hidden}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg);border-left:1px solid rgba(255,255,255,0.1)}::-webkit-scrollbar-thumb{background:var(--accent)}
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .4s,visibility .4s;animation:ldFail .3s ease 5s forwards}
+#loader.done{opacity:0;visibility:hidden}
+@keyframes ldFail{to{opacity:0;visibility:hidden}}
+#loader svg{animation:ldPulse 1s steps(2) infinite}
+@keyframes ldPulse{0%,100%{opacity:.3}50%{opacity:1}}
+#cur{position:fixed;width:14px;height:14px;border:1px solid var(--accent);pointer-events:none;z-index:9998;opacity:0;transition:opacity .12s,width .12s,height .12s;will-change:transform}
+#cur.on{opacity:1}
+#cur.grow{width:26px;height:26px;border-width:2px;box-shadow:0 0 10px rgba(0,229,255,0.3)}
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9997;width:0;box-shadow:0 0 10px rgba(0,229,255,0.5);will-change:width}
+@keyframes rUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes clipIn{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0% 0 0)}}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes sH{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.rv{opacity:0;transform:translateY(25px);transition:opacity .35s ease,transform .35s ease}
+.rv.s{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.05s}.d2{transition-delay:.1s}.d3{transition-delay:.15s}.d4{transition-delay:.2s}.d5{transition-delay:.25s}.d6{transition-delay:.3s}.d7{transition-delay:.35s}
+.ln{transform:scaleX(0);transform-origin:left;transition:transform .5s ease}.ln.s{transform:scaleX(1)}
+.mq-t{display:flex;animation:mq 22s linear infinite;width:max-content}.mq-t:hover{animation-play-state:paused}
+.bf{position:relative;z-index:1;background:var(--accent);color:#000!important;border:1px solid var(--accent);box-shadow:0 0 15px rgba(0,229,255,0.2);font-weight:700;text-transform:uppercase;letter-spacing:.05em;transition:transform .2s,box-shadow .2s,background .2s;border-radius:2px}
+.bf:hover{transform:translateY(-2px);box-shadow:0 0 25px rgba(0,229,255,0.5);background:var(--accent-dk)}
+.bf:active{transform:translateY(0);box-shadow:0 2px 10px rgba(0,229,255,0.2)}
+.bo{background:transparent;color:var(--fg)!important;border:1px solid var(--accent);box-shadow:0 0 15px rgba(0,229,255,0.2);font-weight:700;text-transform:uppercase;letter-spacing:.05em;transition:transform .2s,border-color .2s,color .2s,background .2s,box-shadow .2s;border-radius:2px}
+.bo:hover{transform:translateY(-2px);background:rgba(255,255,255,0.05);border-color:var(--accent);color:var(--accent)!important;box-shadow:0 0 25px rgba(0,229,255,0.5)}
+.nl{position:relative;font-weight:600}.nl::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width .15s,box-shadow .15s}.nl:hover::after,.nl.active::after{width:100%;box-shadow:0 0 8px var(--accent)}.nl.active{color:var(--accent)}
+.cm{border:1px solid rgba(255, 255, 255, 0.05);background:var(--card);backdrop-filter:blur(10px);transition:all .3s ease;border-radius:4px}
+.cm:hover{transform:translateY(-4px);border-color:rgba(0, 229, 255, 0.4);box-shadow:0 10px 30px -10px rgba(0, 229, 255, 0.15)}
+.t-body{color:rgba(255, 255, 255, 0.7);font-weight:500;line-height:1.6}
+.t-body-dk{color:rgba(255, 255, 255, 0.7);font-weight:500;line-height:1.6}
+.t-lead{font-weight:800;color:#FFFFFF}
+.t-lead-dk{font-weight:800;color:#FFFFFF}
+.t-label{color:rgba(255, 255, 255, 0.5);font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-size:10px;line-height:1.4}
+.t-label-dk{color:rgba(255, 255, 255, 0.5);font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-size:10px;line-height:1.4}
+.card-link::after{content:'';position:absolute;inset:0}
+.hs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}.hs::-webkit-scrollbar{display:none}.hs>*{scroll-snap-align:start;flex-shrink:0}
+.gl{height:var(--bw);background:var(--accent);box-shadow:0 0 10px rgba(0,229,255,0.5)}
+.lg-i{transition:transform .25s;transform-origin:center}a:hover .lg-i{transform:rotate(12deg) scale(1.05)}
+.tilt{transform-style:preserve-3d;perspective:800px}
+.tcard{position:relative;border:1px solid rgba(255, 255, 255, 0.05);background:var(--card);backdrop-filter:blur(10px);transition:all .3s ease;border-radius:4px}
+.tcard:hover{transform: translateY(-5px);border-color:var(--accent);box-shadow:inset 0 0 20px rgba(0, 229, 255, 0.1)}
+.tcard.feat{border-color:var(--accent);box-shadow:0 0 30px rgba(0,229,255,0.15)}
+.bgrid{border:1px solid rgba(255, 255, 255, 0.05);display:grid;border-radius:4px;overflow:hidden}
+.scell{border-right:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);transition:all .3s ease}
+.scell:hover{border-color:var(--accent);box-shadow:0 0 30px rgba(0,229,255,0.1)}
+.tcell{border-right:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);background:transparent;transition:all .3s ease}
+.tcell:hover{border-color:var(--accent);box-shadow:0 0 30px rgba(0,229,255,0.1)}
+.tmcell{border-right:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);background:transparent;transition:all .3s ease}
+.tmcell:hover{transform: translateY(-5px);border-color:var(--accent);box-shadow:inset 0 0 20px rgba(0, 229, 255, 0.1)}
+.svc-num{font-family:'Space Mono',monospace;font-size:48px;font-weight:700;color:rgba(255,255,255,0.05);line-height:1;position:absolute;top:12px;right:16px;z-index:0}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent)!important;outline-offset:2px!important;box-shadow:0 0 10px rgba(0,229,255,0.5)}
+
+@media(prefers-reduced-motion:reduce){.rv{transition:opacity .1s;transform:none}.rv.s{transform:none}#cur{display:none}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: -2; background: radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.08), transparent 70%), linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 40px 40px; background-color: #050505; }
+
+</style>
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:bg-black focus:text-white focus:px-5 focus:py-3 focus:text-xs focus:font-bold focus:font-mono focus:tracking-widest" style="border:3px solid #fff">SKIP TO CONTENT</a>
+<div id="loader"><svg width="52" height="52" viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="32" height="32" stroke="#000" stroke-width="3" fill="none"/><rect x="12" y="12" width="16" height="16" stroke="rgba(0, 229, 255, 0.3)" stroke-width="2" fill="rgba(23,189,101,.1)"/><circle cx="20" cy="20" r="4" fill="#000"/><circle cx="20" cy="20" r="1.5" fill="rgba(0, 229, 255, 0.3)"/></svg></div>
+<div id="cur"></div>
+<div id="prog"></div>
+<div id="root"></div>
+<script type="text/babel">
+const{useState,useEffect,useRef,useCallback}=React;
+
+/* ── ICONS ────────────────────────────────────────────────────── */
+const IP={
+menu:<><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></>,
+x:<><path d="M18 6 6 18"/><path d="m6 6 12 12"/></>,
+ar:<><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></>,
+adr:<><path d="M7 7 17 17"/><path d="M7 17h10V7"/></>,
+aur:<><path d="M7 17 17 7"/><path d="M7 7h10v10"/></>,
+shield:<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
+cloud:<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>,
+globe:<><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></>,
+server:<><rect width="20" height="8" x="2" y="2" rx="0"/><rect width="20" height="8" x="2" y="14" rx="0"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></>,
+lock:<><rect width="18" height="11" x="3" y="11" rx="0"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></>,
+sliders:<><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></>,
+trophy:<><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></>,
+monitor:<><rect width="20" height="14" x="2" y="3" rx="0"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></>,
+kanban:<><rect width="20" height="14" x="3" y="3" rx="0"/><path d="M3 9h18"/><path d="M9 21V9"/></>,
+badge:<><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></>,
+rocket:<><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></>,
+building:<><rect width="16" height="20" x="4" y="2" rx="0"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></>,
+clock:<><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>,
+refresh:<><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></>,
+star:<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>,
+linkedin:<><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></>,
+twitter:<path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>,
+youtube:<><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></>,
+github:<><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></>,
+network:<><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></>,
+shuffle:<><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></>,
+wifi:<><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></>,
+database:<><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></>,
+harddrive:<><line x1="22" y1="12" x2="2" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" y1="16" x2="6.01" y2="16"/><line x1="10" y1="16" x2="10.01" y2="16"/></>,
+zap:<><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></>,
+scan:<><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></>,
+layers:<><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></>,
+eye:<><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></>,
+mail:<><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></>,
+phone:<><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></>,
+cpu:<><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></>,
+};
+function Ic({n,s=16,c=''}){
+  return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter" className={c}>{IP[n]}</svg>;
+}
+
+/* ── HOOKS ─────────────────────────────────────────────────────── */
+function useInView(opts={}){
+  const ref=useRef(null);const[v,setV]=useState(false);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const to=setTimeout(()=>{setV(true)},3000);
+    const ob=new IntersectionObserver(([e])=>{if(e.isIntersecting){setV(true);ob.unobserve(el);clearTimeout(to)}},{threshold:.05,rootMargin:'0px 0px -10px 0px',...opts});
+    ob.observe(el);return()=>{ob.disconnect();clearTimeout(to)};
+  },[]);
+  return[ref,v];
+}
+function useLineInView(){
+  const ref=useRef(null);const[v,setV]=useState(false);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const to=setTimeout(()=>{setV(true)},3000);
+    const ob=new IntersectionObserver(([e])=>{if(e.isIntersecting){setV(true);ob.unobserve(el);clearTimeout(to)}},{threshold:.1});
+    ob.observe(el);return()=>{ob.disconnect();clearTimeout(to)};
+  },[]);
+  return[ref,v];
+}
+function useCounter(target,suffix='',threshold=.3){
+  const ref=useRef(null);const[val,setVal]=useState(0);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const to=setTimeout(()=>{setVal(target)},3500);
+    const ob=new IntersectionObserver(([e])=>{if(e.isIntersecting){const st=performance.now();(function f(n){const p=Math.min((n-st)/1600,1),ease=1-Math.pow(1-p,2);setVal(Math.floor(ease*target));p<1&&requestAnimationFrame(f)})(st);ob.unobserve(el);clearTimeout(to)}},{threshold});ob.observe(el);return()=>{ob.disconnect();clearTimeout(to)};
+  },[target,suffix,threshold]);
+  return[ref,val.toLocaleString()+suffix];
+}
+
+/* ── UTILITY COMPONENTS ────────────────────────────────────────── */
+function Rv({children,className='',delay='',tag:Tag='div',...props}){
+  const[ref,vis]=useInView();
+  return <Tag ref={ref} className={`rv ${vis?'s':''} ${delay} ${className}`} {...props}>{children}</Tag>;
+}
+function RvLine({className=''}){
+  const[ref,vis]=useLineInView();
+  return <div ref={ref} className={`gl ln ${vis?'s':''} ${className}`}/>;
+}
+function Counter({target,suffix='',className=''}){
+  const[ref,val]=useCounter(target,suffix);
+  return <p ref={ref} className={className}>{val}</p>;
+}
+function MagBtn({children,className='',href='#',...props}){
+  const ref=useRef(null);
+  useEffect(()=>{const el=ref.current;if(!el)return;const mv=e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.08}px,${(e.clientY-r.top-r.height/2)*.08}px)`};const ml=()=>{el.style.transform=''};el.addEventListener('mousemove',mv);el.addEventListener('mouseleave',ml);return()=>{el.removeEventListener('mousemove',mv);el.removeEventListener('mouseleave',ml)}},[]);
+  return <a ref={ref} href={href} className={`bf ${className}`} {...props}>{children}</a>;
+}
+function OutBtn({children,className='',href='#',...props}){
+  const ref=useRef(null);
+  useEffect(()=>{const el=ref.current;if(!el)return;const mv=e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.08}px,${(e.clientY-r.top-r.height/2)*.08}px)`};const ml=()=>{el.style.transform=''};el.addEventListener('mousemove',mv);el.addEventListener('mouseleave',ml);return()=>{el.removeEventListener('mousemove',mv);el.removeEventListener('mouseleave',ml)}},[]);
+  return <a ref={ref} href={href} className={`bo ${className}`} {...props}>{children}</a>;
+}
+function TiltCard({children,className='',...props}){
+  const ref=useRef(null);
+  useEffect(()=>{const el=ref.current;if(!el)return;const mv=e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(800px) rotateY(${x*6}deg) rotateX(${-y*6}deg) translateZ(4px)`};const ml=()=>{el.style.transform=''};el.addEventListener('mousemove',mv);el.addEventListener('mouseleave',ml);return()=>{el.removeEventListener('mousemove',mv);el.removeEventListener('mouseleave',ml)}},[]);
+  return <div ref={ref} className={`tilt ${className}`} {...props}>{children}</div>;
+}
+function DragScroll({children,className=''}){
+  const ref=useRef(null);
+  useEffect(()=>{const el=ref.current;if(!el)return;let down=false,sx=0,sl=0,moved=0;const pd=e=>{if(e.button!==0)return;down=true;moved=0;sx=e.clientX;sl=el.scrollLeft;el.style.cursor='grabbing'};const pm=e=>{if(!down)return;moved=Math.max(moved,Math.abs(e.clientX-sx));el.scrollLeft=sl-(e.clientX-sx)};const pu=()=>{down=false;el.style.cursor=''};const ck=e=>{if(moved>5){e.preventDefault();e.stopPropagation();moved=0}};el.addEventListener('pointerdown',pd);el.addEventListener('pointermove',pm);['pointerup','pointerleave','pointercancel'].forEach(ev=>el.addEventListener(ev,pu));el.addEventListener('click',ck,true);return()=>{el.removeEventListener('pointerdown',pd);el.removeEventListener('pointermove',pm);['pointerup','pointerleave','pointercancel'].forEach(ev=>el.removeEventListener(ev,pu));el.removeEventListener('click',ck,true)}},[]);
+  return <div ref={ref} className={`hs ${className}`}>{children}</div>;
+}
+function Logo({size=36,dark=false}){
+  const sc=dark?'#fff':'#000';
+  return <a href="#" className="flex items-center gap-2.5">
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      <g className="lg-i"><path d="M20 3L35 11.5V28.5L20 37L5 28.5V11.5L20 3Z" stroke={sc} strokeWidth="3" fill="none"/><path d="M20 11L27 15V24C27 28 20 31 20 31C20 31 13 28 13 24V15L20 11Z" fill="rgba(23,189,101,.12)" stroke={sc} strokeWidth="2"/><circle cx="20" cy="19.5" r="4.5" fill="rgba(0, 229, 255, 0.3)"/><circle cx="20" cy="19.5" r="2" fill={dark?'#000':'#F0EBE3'}/></g>
+    </svg>
+    <span className="text-sm font-black tracking-tight text-white">ANXION<span className="font-normal ml-1 text-white/60">SOLUTIONS</span></span>
+  </a>;
+}
+
+/* ── DATA ──────────────────────────────────────────────────────── */
+const NAV=[{id:'about',label:'ABOUT'},{id:'services',label:'SERVICES',sub:['Managed IT Operations','Managed Cloud & Infrastructure','Managed Cybersecurity','AI Consultation','Cybersecurity Governance & Advisory','IT Staff Augmentation']},{id:'team',label:'TEAM'},{id:'contact',label:'CONTACT'}];
+const MARQUEE=['NETWORK INFRASTRUCTURE','CLOUD ARCHITECTURE','HYBRID CLOUD','SD-WAN','NETWORK SECURITY','CLOUD MIGRATION','MANAGED SERVICES','ZERO TRUST','MULTI-CLOUD','FIREWALL SOLUTIONS','DISASTER RECOVERY','NETWORK AUTOMATION','DATA CENTER','UNIFIED COMMUNICATIONS'];
+const SVCS=[
+  {icon:'monitor',title:'Managed IT Operations',desc:'Comprehensive endpoint management, proactive system monitoring, Tier 1-3 helpdesk support, and automated patch deployment. Guaranteeing business continuity with strict enterprise SLAs.',link:'#contact'},
+  {icon:'server',title:'Managed Cloud & Infrastructure',desc:'24/7 proactive oversight across public, private, and hybrid environments. Continuous resource optimization, capacity planning, and automated failover orchestration.',link:'#contact'},
+  {icon:'lock',title:'Managed Cybersecurity',desc:'Round-the-clock SOC operations, advanced threat hunting, and rapid incident response. Continuous vulnerability scanning and AI-powered endpoint detection & response (EDR).',link:'#contact'},
+  {icon:'cpu',title:'AI Consultation',desc:'Strategic AI integration, machine learning pipeline design, and secure LLM deployment. Transforming proprietary enterprise data into actionable intelligence and automated workflows.',link:'#contact'},
+  {icon:'shield',title:'Cybersecurity Governance & Advisory',desc:'Virtual CISO services, risk assessment, and compliance readiness for SOC2, ISO27001, and HIPAA. Aligning security posture with global regulatory frameworks.',link:'#contact'},
+  {icon:'kanban',title:'IT Staff Augmentation',desc:'On-demand deployment of certified systems engineers, cloud architects, and security analysts. Seamlessly scaling your internal IT teams for mission-critical project delivery.',link:'#contact'},
+  {icon:'network',title:'Network Infrastructure',desc:'Enterprise LAN/WAN design, routing and switching, SDN deployment, and network performance optimization for global operations. Cisco, Juniper, and Aruba certified.',link:'#contact'},
+  {icon:'cloud',title:'Cloud Solutions',desc:'AWS, Azure, GCP architecture and management. Cloud-native design, cost optimization, and infrastructure-as-code with Terraform and Pulumi.',link:'#contact'},
+  {icon:'shuffle',title:'Hybrid Cloud',desc:'Multi-cloud strategy, secure cloud connectivity, governance frameworks, and intelligent workload placement across on-prem and public cloud.',link:'#contact'},
+  {icon:'shield',title:'Network Security',desc:'Next-gen firewalls, VPN, zero-trust architecture, SIEM integration, and compliance-driven security design for regulated industries.',link:'#contact'},
+  {icon:'rocket',title:'Cloud Migration',desc:'Assessment, planning, lift-and-shift, re-architecture, and validation with our proven zero-downtime migration methodologies.',link:'#contact'},
+  {icon:'sliders',title:'Managed Services',desc:'24/7 NOC monitoring, incident response, performance optimization, and proactive infrastructure management by certified engineers.',link:'#contact'},
+  {icon:'wifi',title:'SD-WAN Solutions',desc:'Software-defined WAN deployment, traffic optimization, application-aware routing, and centralized management for multi-site enterprises.',link:'#contact'},
+  {icon:'database',title:'Data Center Services',desc:'Data center design, build, and operations. Cabling, cooling, power, rack management, and DCIM implementation for Tier III+ facilities.',link:'#contact'},
+  {icon:'phone',title:'Unified Communications',desc:'VoIP, video conferencing, collaboration platforms, contact center solutions. Cisco Webex, Microsoft Teams, and Zoom Phone integration.',link:'#contact'},
+  {icon:'harddrive',title:'Disaster Recovery',desc:'DR strategy, backup architecture, RPO/RTO planning, failover testing, and business continuity for mission-critical infrastructure.',link:'#contact'},
+  {icon:'zap',title:'Network Automation',desc:'Python, Ansible, Nornir automation for network config management, compliance auditing, and zero-touch provisioning at scale.',link:'#contact'},
+  {icon:'scan',title:'IT Infrastructure Consulting',desc:'Technology roadmaps, vendor selection, TCO analysis, capacity planning, and digital transformation strategy for enterprise IT.',link:'#contact'},
+  {icon:'layers',title:'Multi-Cloud Management',desc:'Single-pane-of-glass management across AWS, Azure, and GCP. Cost governance, policy enforcement, and cross-cloud orchestration.',link:'#contact'},
+  {icon:'eye',title:'Network Visibility & Analytics',desc:'Flow analysis, NetFlow/sFlow monitoring, AIOps-driven anomaly detection, and real-time performance dashboards for full stack visibility.',link:'#contact'},
+  {icon:'mail',title:'Email & Collaboration Security',desc:'Secure email gateway, anti-phishing, DLP, email archiving, and Microsoft 365 / Google Workspace security hardening.',link:'#contact'},
+  {icon:'cpu',title:'Compute & Virtualization',desc:'VMware vSphere, Hyper-V, KVM virtualization. Server consolidation, container orchestration with Kubernetes, and edge computing.',link:'#contact'},
+];
+const STATS=[{t:500,s:'+'},{t:120,s:'+'},{t:350,s:'+'},{t:99.9,s:'%'},{t:15,s:'+'}];
+const SLABS=['Projects Delivered','Enterprise Clients','Networks Managed','Uptime Achieved','Countries'];
+const TESTS=[
+  {name:'Rahmat Khan',role:'CTO, Global Logistics',ini:'RK',text:'ANXION redesigned our entire network infrastructure across 12 offices. The SD-WAN deployment reduced our WAN costs by 40% while improving performance 3x. Their engineering team was exceptional throughout.'},
+  {name:'Umair Chama',role:'VP Infrastructure, Fintech Co.',ini:'UC',text:'We migrated 200+ workloads to AWS with zero downtime. ANXION\'s methodical approach and deep cloud expertise made what seemed impossible, routine. Truly enterprise-grade delivery.'},
+  {name:'Mashal Junaid',role:'CISO, Healthcare Group',ini:'MJ',text:'The zero-trust security architecture ANXION implemented has been battle-tested. We passed three compliance audits in the first year with zero findings. Outstanding work from start to finish.'},
+];
+const PARTNERS=['CISCO','AWS','MICROSOFT AZURE','GOOGLE CLOUD','FORTINET','PALO ALTO','VMWARE','JUNIPER','ARUBA','MIKROTIK','ARISTA','MERAKI'];
+
+/* ── GLOBAL EFFECTS ────────────────────────────────────────────── */
+function Cursor(){
+  const ref=useRef(null);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;let cx=0,cy=0,tx=0,ty=0,raf;
+    const mv=e=>{tx=e.clientX;ty=e.clientY;if(!el.classList.contains('on'))el.classList.add('on')};
+    const mo=e=>{if(e.target.closest('a,button,.cm,.tcard'))el.classList.add('grow');else el.classList.remove('grow')};
+    const mt=e=>{if(e.target.closest('a,button,.cm,.tcard')&&!e.relatedTarget?.closest('a,button,.cm,.tcard'))el.classList.remove('grow')};
+    const loop=()=>{cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;el.style.transform=`translate(${cx-7}px,${cy-7}px)`;raf=requestAnimationFrame(loop)};
+    raf=requestAnimationFrame(loop);
+    document.addEventListener('mousemove',mv,{passive:true});document.addEventListener('mouseover',mo);document.addEventListener('mouseout',mt);
+    return()=>{cancelAnimationFrame(raf);document.removeEventListener('mousemove',mv);document.removeEventListener('mouseover',mo);document.removeEventListener('mouseout',mt)};
+  },[]);
+  return <div ref={ref} id="cur"/>;
+}
+function Prog(){
+  const ref=useRef(null);
+  useEffect(()=>{const el=ref.current;if(!el)return;let st=0,tk=false;
+    const sc=()=>{if(!tk){requestAnimationFrame(()=>{const h=document.documentElement,sh=h.scrollHeight-h.clientHeight,sp=sh>0?window.scrollY/sh*100:0;if(Math.abs(sp-st)>.5){el.style.width=sp+'%';st=sp}tk=false});tk=true}};
+    window.addEventListener('scroll',sc,{passive:true});return()=>window.removeEventListener('scroll',sc);
+  },[]);
+  return <div ref={ref} id="prog"/>;
+}
+
+/* ── NAVBAR ────────────────────────────────────────────────────── */
+function Navbar(){
+  const navRef=useRef(null);const closeRef=useRef(null);
+  const[open,setOpen]=useState(false);const[active,setActive]=useState('');
+  useEffect(()=>{
+    let tk=false;
+    const sc=()=>{if(!tk){requestAnimationFrame(()=>{const n=navRef.current;if(n){n.style.background=window.scrollY>40?'rgba(5, 5, 5, 0.85)':'transparent';n.style.backdropFilter=window.scrollY>40?'blur(10px)':'none';n.style.borderBottom=window.scrollY>40?'1px solid rgba(255,255,255,0.1)':'1px solid transparent'}tk=false});tk=true}};
+    window.addEventListener('scroll',sc,{passive:true});return()=>window.removeEventListener('scroll',sc);
+  },[]);
+  useEffect(()=>{
+    const ids=NAV.map(l=>l.id);const els=ids.map(id=>document.getElementById(id)).filter(Boolean);
+    const ob=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting)setActive(en.target.id)})},{rootMargin:'-40% 0px -40% 0px'});
+    els.forEach(el=>ob.observe(el));return()=>ob.disconnect();
+  },[]);
+  useEffect(()=>{if(open){document.body.style.overflow='hidden';setTimeout(()=>closeRef.current?.focus(),50)}else document.body.style.overflow='';return()=>{document.body.style.overflow=''}},[open]);
+  useEffect(()=>{const ek=e=>{if(e.key==='Escape'&&open)setOpen(false)};document.addEventListener('keydown',ek);return()=>document.removeEventListener('keydown',ek)},[open]);
+  return(
+    <>
+    <nav ref={navRef} className="fixed top-0 w-full z-50 transition-all" style={{borderBottom:'var(--bw) solid transparent'}}>
+      <div className="mx-auto px-6 lg:px-10 h-20 flex items-center justify-between" style={{maxWidth:1400}}>
+        <Logo dark={true}/>
+        <div className="hidden lg:flex items-center gap-8">
+          {NAV.map(l=> l.sub ? (
+            <div key={l.id} className="relative group">
+              <a href={`#${l.id}`} className={`nl flex items-center gap-1.5 text-xs font-mono tracking-widest text-white/70 hover:text-white transition-colors ${active===l.id?'active':''}`}>{l.label} <span style={{fontSize:8}}>▼</span></a>
+              <div className="absolute top-full left-0 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                <div className="bg-[#0A0A0A] bg-opacity-80 backdrop-blur-xl border border-white/10 p-3 flex flex-col gap-1 w-72">
+                  {l.sub.map(s=><a key={s} href="#services" className="text-xs font-mono font-bold text-white hover:text-[var(--accent)] p-2.5 transition-colors duration-200">{s}</a>)}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a key={l.id} href={`#${l.id}`} className={`nl text-xs font-mono tracking-widest text-white/70 hover:text-white transition-colors ${active===l.id?'active':''}`}>{l.label}</a>
+          ))}
+        </div>
+        <MagBtn href="#contact" className="hidden lg:inline-flex text-xs font-mono tracking-widest px-6 py-2.5">GET STARTED</MagBtn>
+        <button onClick={()=>setOpen(true)} className="lg:hidden text-white" aria-label="Open menu" aria-expanded={open}><Ic n="menu" s={22}/></button>
+      </div>
+    </nav>
+    <div id="mm" role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8" style={{background:'var(--bg)',opacity:open?1:0,pointerEvents:open?'auto':'none',transition:'opacity .2s'}}>
+      <button ref={closeRef} onClick={()=>setOpen(false)} className="absolute top-6 right-6 text-white" aria-label="Close menu"><Ic n="x" s={26}/></button>
+      {NAV.map(l=><a key={l.id} href={`#${l.id}`} onClick={()=>setOpen(false)} className="text-3xl font-black tracking-tight text-white hover:text-brand transition-colors">{l.label}</a>)}
+    </div>
+    </>
+  );
+}
+
+/* ── HERO ──────────────────────────────────────────────────────── */
+function Hero(){
+  return(
+    <section id="main" tabIndex="-1" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 hidden lg:block pointer-events-none opacity-60" style={{width:500,height:500}}>
+        <svg width="500" height="500" viewBox="0 0 500 500" fill="none" style={{ filter: 'drop-shadow(0 0 10px rgba(0,229,255,0.2))' }}>
+          <rect x="80" y="30" width="180" height="180" stroke="rgba(0, 229, 255, 0.3)" strokeWidth="3" fill="none" transform="rotate(12 170 120)"/>
+          <rect x="280" y="100" width="100" height="100" stroke="rgba(0, 229, 255, 0.3)" strokeWidth="3" fill="rgba(0, 229, 255, 0.1)" transform="rotate(-8 330 150)"/>
+          <rect x="60" y="280" width="220" height="100" stroke="rgba(0, 229, 255, 0.3)" strokeWidth="2" fill="none" transform="rotate(2 170 330)"/>
+          <line x1="0" y1="260" x2="500" y2="250" stroke="rgba(0, 229, 255, 0.3)" strokeWidth="2"/>
+          <line x1="380" y1="0" x2="370" y2="500" stroke="rgba(0, 229, 255, 0.3)" strokeWidth="2" opacity=".6"/>
+          <circle cx="420" cy="80" r="45" stroke="rgba(0, 229, 255, 0.3)" strokeWidth="3" fill="none"/>
+          <circle cx="420" cy="80" r="8" fill="rgba(0, 229, 255, 0.3)"/>
+          <rect x="300" y="320" width="80" height="80" stroke="rgba(0, 229, 255, 0.3)" strokeWidth="2" fill="none" transform="rotate(-15 340 360)"/>
+        </svg>
+      </div>
+      <div className="relative z-10 mx-auto px-6 lg:px-10 w-full pt-32 pb-24" style={{maxWidth:1400}}>
+        <div className="max-w-5xl">
+          <span className="inline-block font-mono text-xs font-bold tracking-widest uppercase text-brand mb-8 px-4 py-1.5" style={{border:'var(--bw) solid #000',animation:'rUp .6s ease .2s both',opacity:0}}>ENTERPRISE NETWORKING & CLOUD</span>
+          <h1 className="block font-black tracking-tight leading-none text-white" style={{letterSpacing:'-0.03em',fontSize:'clamp(3rem,10vw,100px)',animation:'clipIn .8s ease .4s both'}}>ANXION</h1>
+          <span className="block font-black tracking-tight leading-none text-white pb-2 inline-block" style={{letterSpacing:'-0.03em',fontSize:'clamp(3rem,10vw,100px)',borderBottom:'6px solid var(--accent)',animation:'rUp .6s ease .7s both',opacity:0}}>SOLUTIONS</span>
+          <div className="mt-10 lg:mt-14 flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10" style={{animation:'rUp .6s ease .9s both',opacity:0}}>
+            <p className="t-body text-base lg:text-lg max-w-md">We <span className="t-lead">design, build, and manage</span> the network and cloud infrastructure that powers your business.</p>
+            <MagBtn href="#services" className="inline-flex items-center gap-3 text-xs font-mono tracking-widest px-8 py-4 w-fit">EXPLORE SERVICES <Ic n="adr" s={14}/></MagBtn>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3" style={{animation:'sH 2s ease infinite'}}>
+        <span className="t-label">SCROLL</span>
+        <div style={{width:3,height:32,background:'#000'}}/>
+      </div>
+    </section>
+  );
+}
+
+/* ── MARQUEE ───────────────────────────────────────────────────── */
+function Marquee(){
+  const items=MARQUEE.map((it,i)=><span key={i} className="inline-flex items-center">{it}{i<MARQUEE.length-1&&<span className="text-brand mx-6">/</span>}</span>);
+  return(
+    <div className="py-4 overflow-hidden" style={{background:'#000'}}>
+      <div className="mq-t"><span className="flex items-center px-4 text-xs text-white font-mono font-bold tracking-wide">{items}</span><span className="flex items-center px-4 text-xs text-white font-mono font-bold tracking-wide" aria-hidden="true">{items}</span></div>
+    </div>
+  );
+}
+
+/* ── ABOUT ─────────────────────────────────────────────────────── */
+function About(){
+  return(
+    <section id="about" className="py-24 lg:py-36">
+      <div className="mx-auto px-6 lg:px-10" style={{maxWidth:1400}}>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <Rv tag="span" className="t-label mb-5 block">[ 001 — ABOUT ]</Rv>
+            <Rv delay="d1" tag="h2" className="text-3xl lg:text-5xl font-black tracking-tight text-white leading-tight">We don't just connect systems.<br/><span className="text-white/40">We architect resilience.</span></Rv>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7 flex flex-col justify-end">
+            <Rv delay="d2" tag="p" className="t-body text-sm mb-5"><span className="t-lead">ANXION SOLUTIONS is a global networking and cloud solutions provider.</span> From enterprise network design to multi-cloud orchestration, we deliver infrastructure that scales with your ambition.</Rv>
+            <Rv delay="d3" tag="p" className="t-body text-sm mb-8"><span className="t-lead">From startups to Fortune 500 enterprises,</span> our engineers bring deep expertise across Cisco, AWS, Azure, and GCP ecosystems — with the certifications to prove it.</Rv>
+            <RvLine className="w-20 mb-8"/>
+            <div className="grid grid-cols-2 gap-4">
+              <Rv delay="d4" className="p-5 bg-[#111] bg-opacity-50 backdrop-blur-md" style={{border:'1px solid rgba(255, 255, 255, 0.05)'}}><Counter target={15} suffix="+" className="text-4xl font-black text-white font-mono"/><p className="t-label mt-2">Years</p></Rv>
+              <Rv delay="d5" className="p-5 bg-[#111] bg-opacity-50 backdrop-blur-md" style={{border:'1px solid rgba(255, 255, 255, 0.05)'}}><Counter target={30} suffix="+" className="text-4xl font-black text-white font-mono"/><p className="t-label mt-2">Countries</p></Rv>
+              <Rv delay="d6" className="p-5 bg-[#111] bg-opacity-50 backdrop-blur-md" style={{border:'1px solid rgba(255, 255, 255, 0.05)'}}><Counter target={200} suffix="+" className="text-4xl font-black text-white font-mono"/><p className="t-label mt-2">Engineers</p></Rv>
+              <Rv delay="d7" className="p-5 bg-[#111] bg-opacity-50 backdrop-blur-md" style={{border:'1px solid rgba(255, 255, 255, 0.05)'}}><Counter target={500} suffix="+" className="text-4xl font-black text-white font-mono"/><p className="t-label mt-2">Projects</p></Rv>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── SERVICES ──────────────────────────────────────────────────── */
+function Services(){
+  return(
+    <section id="services" className="py-16">
+      <div className="mx-auto px-6 lg:px-10 mb-10 flex items-end justify-between gap-6" style={{maxWidth:1400}}>
+        <div>
+          <Rv tag="span" className="t-label mb-5 block">[ 002 — SERVICES ]</Rv>
+          <Rv delay="d1" tag="h2" className="text-3xl lg:text-5xl font-black tracking-tight text-white">What we <span className="text-white/40">deliver.</span></Rv>
+        </div>
+        <Rv delay="d2" tag="span" className="t-label whitespace-nowrap flex items-center gap-2">DRAG <Ic n="ar" s={10}/></Rv>
+      </div>
+      <DragScroll className="gap-4 px-6 lg:px-10 pb-4">
+        {SVCS.map((sv,i)=>(
+          <TiltCard key={sv.title} className="cm bg-[#111111] border border-white/10 rounded-lg p-6 group relative" style={{width: 320}}>
+            <span className="svc-num">{String(i+1).padStart(2,'0')}</span>
+            <div className="w-10 h-10 flex items-center justify-center mb-4 group-hover:border-[var(--accent)] group-hover:bg-[var(--accent)]/5 transition-colors" style={{border:'1px solid rgba(255, 255, 255, 0.05)'}}><Ic n={sv.icon} s={18} c="text-white group-hover:text-[var(--accent)] transition-colors"/></div>
+            <h3 className="text-sm font-black text-white mb-2 uppercase tracking-wide pr-10">{sv.title}</h3>
+            <p className="t-body text-xs text-white/70 mb-5">{sv.desc}</p>
+            <a href={sv.link} className="card-link relative flex items-center gap-2 text-xs font-mono font-bold text-white uppercase tracking-wider hover:text-[var(--accent)] transition-all" aria-label={'Explore '+sv.title}>EXPLORE <Ic n="ar" s={12}/></a>
+          </TiltCard>
+        ))}
+      </DragScroll>
+    </section>
+  );
+}
+function Divider(){return <div className="mx-auto px-6 lg:px-10 py-12" style={{maxWidth:1400}}><RvLine/></div>}
+
+/* ── STATS ─────────────────────────────────────────────────────── */
+function Stats(){
+  return(
+    <section className="py-16" style={{background:'#000',borderTop:'var(--bw) solid #000',borderBottom:'var(--bw) solid #000'}}>
+      <div className="mx-auto px-6 lg:px-10" style={{maxWidth:1400}}>
+        <div className="bgrid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" style={{border:'var(--bw) solid rgba(255,255,255,.15)'}}>
+          {STATS.map((s,i)=>(
+            <Rv key={SLABS[i]} delay={i>0?'d'+Math.min(i,4):''} className="scell p-6 md:p-10" style={{borderRight:i<4?'var(--bw) solid rgba(255,255,255,.1)':'none',borderBottom:i<3?'var(--bw) solid rgba(255,255,255,.1)':'none'}}>
+              <Counter target={s.t} suffix={s.s} className={`text-4xl lg:text-6xl font-black font-mono tracking-tight ${i===3?'text-brand':'text-white'}`}/>
+              <p className="t-label-dk mt-2">{SLABS[i]}</p>
+            </Rv>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── TESTIMONIALS ──────────────────────────────────────────────── */
+function Testimonials(){
+  return(
+    <section className="py-24 lg:py-36">
+      <div className="mx-auto px-6 lg:px-10" style={{maxWidth:1400}}>
+        <Rv tag="span" className="t-label mb-12 block">[ 003 — VOICES ]</Rv>
+        <div className="bgrid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {TESTS.map((t,i)=>(
+            <Rv key={t.name} delay={i>0?'d'+i:''} tag="div" className="tcell p-6 md:p-10" style={{borderRight:i<2?'var(--bw) solid #000':'none',borderTop:i>0?'var(--bw) solid #000':'none'}}>
+              <div className="flex gap-1 mb-4">{[...Array(5)].map((_,j)=><Ic key={j} n="star" s={14} c="text-brand" style={{fill:'rgba(23,189,101,.2)'}}/>)}</div>
+              <p className="t-body text-sm mb-6 text-white/80">"{t.text}"</p>
+              <div className="flex items-center gap-3 pt-5" style={{borderTop:'var(--bw) solid #000'}}>
+                <div className="w-9 h-9 flex items-center justify-center text-xs font-black font-mono text-brand" style={{border:'var(--bw) solid #000',background:'rgba(23,189,101,.05)'}}>{t.ini}</div>
+                <div><p className="text-xs font-black text-white">{t.name}</p><p className="t-label" style={{fontSize:9}}>{t.role}</p></div>
+              </div>
+            </Rv>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── TEAM ──────────────────────────────────────────────────────── */
+function Team(){
+  return(
+    <section id="team" className="py-24 lg:py-36 relative">
+      <div className="mx-auto px-6 lg:px-10" style={{maxWidth:1400}}>
+        <div className="mb-14">
+          <Rv tag="span" className="t-label mb-5 block">[ 004 — TEAM ]</Rv>
+          <Rv delay="d1" tag="h2" className="text-3xl lg:text-5xl font-black tracking-tight text-white">Meet the <span className="text-white/40">engineers.</span></Rv>
+          <Rv delay="d2" tag="p" className="t-body text-sm max-w-lg mt-4"><span className="t-lead">Active industry practitioners</span> — not consultants. They bring real-world infrastructure battle scars into every engagement.</Rv>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 bgrid">
+          <Rv tag="div" className="col-span-1 lg:col-span-2 lg:row-span-2">
+            <div className="tcard feat p-7 lg:p-14 flex flex-col justify-between h-full bg-[#0a0a0a] bg-opacity-60 backdrop-blur-2xl" style={{boxShadow:'0 0 40px rgba(0, 229, 255, 0.15)',border:'none'}}>
+              <div className="flex justify-between items-start mb-6">
+                <div className="w-20 h-20 flex items-center justify-center" style={{border:'1px solid var(--accent)',background:'rgba(0,229,255,.05)'}}><span className="text-3xl font-black font-mono text-brand">MK</span></div>
+                <span className="font-mono text-xs font-bold tracking-widest uppercase text-brand px-3 py-1" style={{border:'1px solid var(--accent)'}}>FEATURED</span>
+              </div>
+              <div>
+                <h3 className="text-4xl lg:text-5xl font-black text-white mb-2">MOOSA KHAN</h3>
+                <p className="text-sm text-brand font-mono font-bold tracking-wider mb-6">LEAD NETWORK ARCHITECT</p>
+                <p className="t-body-dk text-base mb-8 max-w-xl">Expert in enterprise networking — CCNA, CCNP, routing and switching, SDN, and network security architecture. Led infrastructure design and deployment for enterprises and service providers across 15+ countries.</p>
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {['CCNA/CCNP','ROUTING & SWITCHING','SDN','NETWORK SECURITY','FIREWALL CONFIG'].map(t=><span key={t} className="bg-[#111] border border-white/20 text-white rounded-full px-4 py-1.5 text-[10px] font-bold tracking-wide">{t}</span>)}
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-6 mt-auto" style={{borderTop:'1px solid rgba(255,255,255,.15)'}}>
+                <a href="https://www.linkedin.com/in/moosa-khan-5a0aaa234/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-mono font-bold text-brand hover:text-[var(--accent)] hover:drop-shadow-[0_0_8px_var(--accent)] transition-all"><Ic n="linkedin" s={16}/>LINKEDIN <Ic n="aur" s={14}/></a>
+                <a href="#contact" className="text-sm font-mono text-white/50 hover:text-[var(--accent)] hover:drop-shadow-[0_0_8px_var(--accent)] transition-all">WORK WITH ME <Ic n="ar" s={12}/></a>
+              </div>
+            </div>
+          </Rv>
+          <Rv delay="d1" tag="div">
+            <div className="tmcell p-6 md:p-10 flex flex-col justify-between h-full">
+              <div>
+                <div className="w-11 h-11 flex items-center justify-center mb-4" style={{border:'var(--bw) solid rgba(255,255,255,.2)',background:'rgba(255,255,255,.03)'}}><span className="text-sm font-black font-mono text-white/80">WA</span></div>
+                <h3 className="text-xs font-black text-white mb-0.5 tracking-wide">WASEEM ALI ABBAS</h3>
+                <p className="text-xs text-brand font-mono font-bold tracking-wider mb-3">CLOUD ARCHITECT</p>
+                <p className="t-body-dk text-xs">AWS SA Professional, Azure Architect. Led 200+ cloud migrations with zero-downtime for enterprise clients.</p>
+              </div>
+              <div className="flex items-center gap-2 pt-4 mt-4" style={{borderTop:'var(--bw) solid rgba(255,255,255,.1)'}}>
+                <a href="#" className="text-xs font-mono text-white/50 hover:text-[var(--accent)] hover:drop-shadow-[0_0_8px_var(--accent)] transition-all"><Ic n="linkedin" s={12}/> PROFILE</a>
+                <span className="text-white/15">/</span>
+                <a href="#contact" className="text-xs font-mono text-white/50 hover:text-[var(--accent)] hover:drop-shadow-[0_0_8px_var(--accent)] transition-all">WORK WITH ME <Ic n="ar" s={10}/></a>
+              </div>
+            </div>
+          </Rv>
+          <Rv delay="d2" tag="div">
+            <div className="tmcell p-6 md:p-10 flex flex-col justify-between h-full" style={{borderRight:'none'}}>
+              <div>
+                <div className="w-11 h-11 flex items-center justify-center mb-4" style={{border:'var(--bw) solid rgba(255,255,255,.2)',background:'rgba(255,255,255,.03)'}}><span className="text-sm font-black font-mono text-white/80">RK</span></div>
+                <h3 className="text-xs font-black text-white mb-0.5 tracking-wide">RAWZAN KHAN</h3>
+                <p className="text-xs text-brand font-mono font-bold tracking-wider mb-3">SECURITY ENGINEER</p>
+                <p className="t-body-dk text-xs">Palo Alto, Fortinet certified. Zero-trust architecture, next-gen firewalls, and SIEM integration specialist.</p>
+              </div>
+              <div className="flex items-center gap-2 pt-4 mt-4" style={{borderTop:'var(--bw) solid rgba(255,255,255,.1)'}}>
+                <a href="#" className="text-xs font-mono text-white/50 hover:text-[var(--accent)] hover:drop-shadow-[0_0_8px_var(--accent)] transition-all"><Ic n="linkedin" s={12}/> PROFILE</a>
+                <span className="text-white/15">/</span>
+                <a href="#contact" className="text-xs font-mono text-white/50 hover:text-[var(--accent)] hover:drop-shadow-[0_0_8px_var(--accent)] transition-all">WORK WITH ME <Ic n="ar" s={10}/></a>
+              </div>
+            </div>
+          </Rv>
+        </div>
+        <Rv delay="d5" className="mt-10 flex justify-center">
+          <MagBtn href="#contact" className="text-xs font-mono tracking-widest px-8 py-3.5">VIEW ALL 200+ ENGINEERS <Ic n="ar" s={14}/></MagBtn>
+        </Rv>
+      </div>
+    </section>
+  );
+}
+
+/* ── PARTNERS ──────────────────────────────────────────────────── */
+function Partners(){
+  const items=PARTNERS.map((p,i)=><span key={i}>{p}</span>);
+  return(
+    <div className="py-5" style={{background:'#000',borderTop:'var(--bw) solid #000',borderBottom:'var(--bw) solid #000'}}>
+      <div className="mq-t" style={{animationDuration:'25s'}}><span className="flex items-center gap-8 px-4 text-xs text-white/60 font-mono font-bold tracking-widest">{items}</span><span className="flex items-center gap-8 px-4 text-xs text-white/60 font-mono font-bold tracking-widest" aria-hidden="true">{items}</span></div>
+    </div>
+  );
+}
+
+/* ── CTA ───────────────────────────────────────────────────────── */
+function CTA(){
+  return(
+    <section className="py-28 lg:py-40 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{width:400,height:400,border:'var(--bw) solid #000',opacity:.06}}/>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{width:200,height:200,border:'var(--bw) solid #000',opacity:.08}}/>
+      <div className="mx-auto px-6 lg:px-10 text-center relative z-10" style={{maxWidth:1400}}>
+        <Rv tag="h2" className="font-black tracking-tight text-white leading-none mb-8" style={{letterSpacing:'-0.04em',fontSize:'clamp(2.5rem,8vw,90px)'}}>READY TO<br/><span className="text-white/30">TRANSFORM?</span></Rv>
+        <Rv delay="d1" tag="p" className="t-body text-sm max-w-md mx-auto mb-10"><span className="t-lead">Join 120+ enterprises</span> who trust ANXION SOLUTIONS for their network and cloud infrastructure.</Rv>
+        <Rv delay="d2" className="flex flex-wrap justify-center gap-4">
+          <MagBtn href="#contact" className="text-xs font-mono tracking-widest px-9 py-4">START NOW <Ic n="ar" s={14}/></MagBtn>
+          <OutBtn href="#services" className="text-xs font-mono tracking-widest px-9 py-4">VIEW SERVICES</OutBtn>
+        </Rv>
+      </div>
+    </section>
+  );
+}
+
+/* ── CONTACT ───────────────────────────────────────────────────── */
+function Contact(){
+  const[msg,setMsg]=useState({text:'',ok:false,show:false});const[busy,setBusy]=useState(false);
+  const FB='anxionsystem@gmail.com';
+  const onSubmit=useCallback(e=>{
+    e.preventDefault();const fd=new FormData(e.target);if(fd.get('hp')){e.target.reset();return}
+    const name=(fd.get('name')||'').trim(),email=(fd.get('email')||'').trim();
+    const show=(t,ok)=>setMsg({text:t,ok,show:true});
+    if(name.length<2||name.length>80){show('Enter a valid name.',false);return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){show('Enter a valid email.',false);return}
+    fd.delete('hp');setBusy(true);show('Opening email client...',true);
+    const body=[...fd.entries()].filter(([,v])=>String(v).trim()).map(([k,v])=>`${k}: ${v}`).join('\n');
+    window.location.href=`mailto:${FB}?subject=${encodeURIComponent('Enquiry — '+name)}&body=${encodeURIComponent(body)}`;
+    setBusy(false);e.target.reset();setTimeout(()=>setMsg(m=>({...m,show:false})),5000);
+  },[]);
+  const inp="w-full bg-transparent py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:border-brand transition-colors font-mono";
+  return(
+    <section id="contact" className="py-24 lg:py-36" style={{background:'#000',borderTop:'var(--bw) solid rgba(255,255,255,.15)'}}>
+      <div className="mx-auto px-6 lg:px-10" style={{maxWidth:1400}}>
+        <div className="grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-5">
+            <Rv tag="span" className="t-label-dk mb-5 block">[ 005 — CONTACT ]</Rv>
+            <Rv delay="d1" tag="h2" className="text-3xl lg:text-5xl font-black tracking-tight text-white mb-5">LET'S TALK.</Rv>
+            <Rv delay="d2" tag="p" className="t-body-dk text-sm mb-10"><span className="t-lead-dk">Network audit or full cloud migration —</span> our solutions architects are ready.</Rv>
+            <Rv delay="d3" tag="div" className="space-y-6">
+              <div><p className="t-label-dk mb-1">EMAIL</p><p><a href="mailto:anxionsystem@gmail.com" className="t-body-dk text-xs font-mono hover:text-[var(--accent)] transition-colors">anxionsystem@gmail.com</a></p></div>
+              <div><p className="t-label-dk mb-1">PHONE</p><p><a href="tel:+13435405558" className="t-body-dk text-xs font-mono hover:text-brand transition-colors">+13435405558</a></p></div>
+              <div><p className="t-label-dk mb-1">LOCATION</p><p className="t-body-dk text-xs font-mono">ANXION SOLUTIONS</p></div>
+              <div><p className="t-label-dk mb-2">SOCIAL</p>
+                <div className="flex gap-2">
+                  {[['linkedin','LinkedIn'],['twitter','Twitter'],['youtube','YouTube'],['github','GitHub']].map(([n,l])=><a key={n} href="#" className="w-9 h-9 flex items-center justify-center text-white/60 hover:text-brand transition-colors" style={{border:'var(--bw) solid rgba(255,255,255,.2)'}} aria-label={l}><Ic n={n} s={14}/></a>)}
+                </div>
+              </div>
+            </Rv>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <Rv delay="d2" tag="form" onSubmit={onSubmit} className="space-y-5" noValidate>
+              <div className="grid grid-cols-2 gap-5">
+                <div><label htmlFor="fn" className="t-label-dk mb-1 block">NAME</label><input id="fn" name="name" type="text" required maxLength={80} autoComplete="name" className={inp} placeholder="Full name" style={{borderBottom:'var(--bw) solid rgba(255,255,255,.2)'}}/></div>
+                <div><label htmlFor="fe" className="t-label-dk mb-1 block">EMAIL</label><input id="fe" name="email" type="email" required maxLength={120} autoComplete="email" className={inp} placeholder="you@company.com" style={{borderBottom:'var(--bw) solid rgba(255,255,255,.2)'}}/></div>
+              </div>
+              <input type="text" name="hp" tabIndex="-1" autoComplete="off" aria-hidden="true" className="hidden"/>
+              <div className="grid grid-cols-2 gap-5">
+                <div><label htmlFor="fp" className="t-label-dk mb-1 block">PHONE</label><input id="fp" name="phone" type="tel" maxLength={20} autoComplete="tel" className={inp} placeholder="+13435405558" style={{borderBottom:'var(--bw) solid rgba(255,255,255,.2)'}}/></div>
+                <div><label htmlFor="fs" className="t-label-dk mb-1 block">SERVICE</label><select id="fs" name="program" required className={inp+" appearance-none cursor-pointer"} style={{borderBottom:'var(--bw) solid rgba(255,255,255,.2)'}}><option value="" className="bg-black">SELECT</option>{SVCS.map(s=><option key={s.title} className="bg-black">{s.title}</option>)}<option className="bg-black">ENTERPRISE / CUSTOM</option></select></div>
+              </div>
+              <div><label htmlFor="fm" className="t-label-dk mb-1 block">MESSAGE</label><textarea id="fm" name="message" rows="3" maxLength={1000} className={inp+" resize-none"} placeholder="Describe your infrastructure needs..." style={{borderBottom:'var(--bw) solid rgba(255,255,255,.2)'}}/></div>
+              <button type="submit" disabled={busy} className="bf text-xs font-mono tracking-widest px-9 py-3.5 mt-1 disabled:opacity-50">SEND MESSAGE <Ic n="aur" s={14}/></button>
+              {msg.show&&<p role="status" aria-live="polite" className={`text-sm font-mono font-bold mt-2 ${msg.ok?'text-brand':'text-red-500'}`}>{msg.text}</p>}
+            </Rv>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── FOOTER ────────────────────────────────────────────────────── */
+function Footer(){
+  return(
+    <footer style={{background:'#000',borderTop:'var(--bw) solid rgba(255,255,255,.15)'}} className="py-8">
+      <div className="mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4" style={{maxWidth:1400}}>
+        <Logo size={20} dark={true}/>
+        <div className="flex items-center gap-5">{NAV.map(l=><a key={l.id} href={`#${l.id}`} className="text-xs font-mono font-bold text-white/50 hover:text-white tracking-wider transition-colors">{l.label}</a>)}</div>
+        <p className="t-label-dk" style={{fontSize:9}}>&copy; 2026 ANXION SOLUTIONS</p>
+      </div>
+    </footer>
+  );
+}
+
+/* ── APP ───────────────────────────────────────────────────────── */
+function App(){
+  return(
+    <>
+      <div className="pointer-events-none fixed z-0 rounded-full blur-[150px] opacity-20 -top-40 -left-40 w-96 h-96 bg-[var(--accent)]" />
+      <div className="pointer-events-none fixed z-0 rounded-full blur-[150px] opacity-20 -bottom-40 -right-40 w-[500px] h-[500px] bg-blue-600" />
+      <Cursor/><Prog/><Navbar/><Hero/><Marquee/><About/><Services/><Divider/><Stats/><Testimonials/><Divider/><Team/><Partners/><CTA/><Contact/><Footer/>
+    </>
+  );
+}
+
+/* ── MOUNT ─────────────────────────────────────────────────────── */
+const root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+const hl=()=>{const l=document.getElementById('loader');if(l)l.classList.add('done')};
+window.addEventListener('load',()=>setTimeout(hl,350));
+document.addEventListener('DOMContentLoaded',()=>setTimeout(hl,2000));
+</script>
+</body>
+</html>
